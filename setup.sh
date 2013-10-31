@@ -30,4 +30,8 @@ echo "Configuring vim..."
 cp -R vim  /home/$user/.vim
 ln -s /home/$user/.vim/vimrc /home/$user/.vimrc
 
+echo "Configuring .xinitrc..."
+cp xinitrc /home/$user/.xinitrc
+cp Xresources /home/$user/.Xresources
+
 echo "Hey look at that, I'm done."
