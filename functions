@@ -1,0 +1,25 @@
+apt-clean() {
+    sudo apt-get clean
+    sudo apt-get autoclean
+    sudo apt-get autoremove
+}
+
+weather() {
+    curl -s "https://wttr.in/${1:-Madison}?m2F&format=v2"
+}
+
+ip-address() {
+    curl -s -H "Accept: application/json" "https://ipinfo.io/${1:-}"
+}
+
+incognito() {
+    if [ -x "$(command -v tmux)" ]; then
+        tmux set-option window-status-current-format "#[fg=brightwhite,bg=#b487b4] #I #[fg=brightwhite,bg=#966396] #W "
+    fi
+}
+
+httpserver() {
+    local ip=localhost
+    local port="${1:-1992}"
+    python -m http.server --bind "${ip}" "${port}"
+}

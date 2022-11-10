@@ -1,0 +1,9 @@
+[user]
+	name = brian houston morrow
+	email = bhm@brianmorrow.net
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false

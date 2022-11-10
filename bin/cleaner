@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+magenta='\e[1;35m'
+red='\e[1;31m'
+white='\e[0;37m'
+
+shopt -s extglob
+
+# Since some programs are installed in non-root directories,
+# don't run this script as root to avoid permission conflict.
+if [[ $EUID -eq 0 ]]; then
+    echo "Don't run this script as root"
+    exit 1
+fi
+
+# Print usage message.
+usage() {
+    local program_name
+    program_name=${0##*/}
+    cat <<EOF
+Usage: $program_name [-option]
+Options:
+    --help    Print this message
+    -s        Clean all junk up
+EOF
+}
+
+safe_cleaner() {
+    echo -e "$magenta\n Cleaning Debian Packages... \n$white"
+    sudo apt-get clean
+
+    echo -e "$magenta\n Autocleaning Debian Packages... \n$white"
+    sudo apt-get autoclean
+
+    echo -e "$magenta\n Autoremoving Debian Packages... \n$white"
+    sudo apt-get autoremove
+
+    echo -e "$magenta\n Cleaning Cache... \n$white"
+    rm -rfv ~/.cache/!(chromium|google-chrome|fontconfig|mozilla|pnpm|nim|pip|zoom|thumbnails)
+
+    echo -e "$magenta\n Cleaning Junk Files... \n$white"
+    rm -rfv ~/.local/share/Trash/*
+    rm -fv ~/.local/share/recently-used.xbel
+    rm -fv ~/.lesshst
+    rm -fv ~/.{node_repl,python,units}_history
+    rm -fv ~/.wget-hsts
+    rm -fv ~/.xsession-errors*
+
+    echo -e "$magenta\n Cleaning Editor... \n$white"
+    rm -rfv ~/.local/share/nano/search_history
+    rm -fv ~/.viminfo
+
+    echo -e "$magenta\n Cleaning Log System... \n$white"
+    sudo sh -c "echo > /var/log/alternatives.log"
+    sudo sh -c "echo > /var/log/dpkg.log"
+    sudo sh -c "echo > /var/log/lastlog"
+    sudo sh -c "echo > /var/log/maillog"
+    sudo sh -c "echo > /var/log/messages"
+    sudo sh -c "echo > /var/log/secure"
+    sudo sh -c "echo > /var/log/wtmp"
+    sudo sh -c "echo > /var/log/xferlog"
+
+    sudo rm -rfv /var/log/apt/*.log
+    sudo rm -rfv /var/log/*.old &> /dev/null
+    sudo rm -rfv /var/log/*.0 &> /dev/null
+    sudo rm -rfv /var/log/*.1 &> /dev/null
+    sudo rm -rfv /var/log/*.2 &> /dev/null
+    sudo rm -rfv /var/log/*.3 &> /dev/null
+    sudo rm -rfv /var/log/*.gz &> /dev/null
+
+    sudo rm -rfv /var/log/apt/*.old &> /dev/null
+    sudo rm -rfv /var/log/apt/*.0 &> /dev/null
+    sudo rm -rfv /var/log/apt/*.1 &> /dev/null
+    sudo rm -rfv /var/log/apt/*.2 &> /dev/null
+    sudo rm -rfv /var/log/apt/*.3 &> /dev/null
+    sudo rm -rfv /var/log/apt/*.gz &> /dev/null
+}
+
+main() {
+    case "$1" in
+        ''|-h|--help)
+            usage
+            exit 0
+            ;;
+        -s)
+            sudo echo -e "$red\n Executing a safe cleaner. \n$white"
+            safe_cleaner
+            ;;
+        *)
+            echo "Command not found"
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"
