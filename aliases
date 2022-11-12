@@ -15,6 +15,7 @@ alias rmf='rm -rf'
 alias p='ps axo pid,user,pcpu,comm'
 alias uptime='uptime -p'
 alias free='free -h'
+alias cat='bat'
 
 # Shortcuts
 alias e='exit'
