@@ -15,10 +15,11 @@ alias rmf='rm -rf'
 alias p='ps axo pid,user,pcpu,comm'
 alias uptime='uptime -p'
 alias free='free -h'
-alias cat='bat'
+alias preview='fzf --height=50% --layout=reverse --preview="bat --color=always {}"'
 
 # Shortcuts
 alias e='exit'
+alias cat='bat'
 alias mp3-dl='yt-dlp --ignore-config --extract-audio \
     --audio-format "mp3" --audio-quality 0 --embed-thumbnail --embed-metadata \
     --output "$HOME/Downloads/%(title)s.%(ext)s"'
@@ -26,6 +27,11 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date "+%a, %d %b %H:%M:%S" && time cat && date "+%a, %d %b %H:%M:%S"'
 alias upd='sudo apt -y update; sudo apt -y upgrade'
+
+alias g='git'
+alias ga='git add -p'
+alias gs='git status'
+alias v='nvim'
 
 # Typos
 alias :q='exit'

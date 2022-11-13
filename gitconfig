@@ -1,6 +1,12 @@
 [user]
 	name = brian houston morrow
 	email = bhm@brianmorrow.net
+[core]
+	editor = vim
+	autocrlf = false
+[color]
+	ui = always
+	diff = always
 [diff]
 	tool = vimdiff
 [merge]
