@@ -38,6 +38,9 @@ safe_cleaner() {
     echo -e "$magenta\n Cleaning Cache... \n$white"
     rm -rfv ~/.cache/!(chromium|google-chrome|fontconfig|mozilla|pnpm|nim|pip|zoom|thumbnails)
 
+    echo -e "$magenta\n Cleaning Downloads ... \n$white"
+    rm -rfv ~/downloads/*
+
     echo -e "$magenta\n Cleaning Junk Files... \n$white"
     rm -rfv ~/.local/share/Trash/*
     rm -fv ~/.local/share/recently-used.xbel
