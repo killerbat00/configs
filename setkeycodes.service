@@ -1,0 +1,10 @@
+[Unit]
+Description=Swap Ctrl+Caps Lock at boot.
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/setkeycodes 3a 29 1d 58
+
+[Install]
+WantedBy=multi-user.target
+
