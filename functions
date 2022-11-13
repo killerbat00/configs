@@ -30,5 +30,5 @@ incognito() {
 httpserver() {
     local ip=localhost
     local port="${1:-1992}"
-    python -m http.server --bind "${ip}" "${port}"
+    python3 -m http.server --bind "${ip}" "${port}"
 }

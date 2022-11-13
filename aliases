@@ -28,6 +28,7 @@ alias pbpaste='xclip -selection clipboard -o'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date "+%a, %d %b %H:%M:%S" && time cat && date "+%a, %d %b %H:%M:%S"'
 alias upd='sudo apt -y update; sudo apt -y upgrade'
 alias nn='new-note'
+alias srv='httpserver'
 
 alias g='git'
 alias ga='git add -p'
