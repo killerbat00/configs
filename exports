@@ -8,28 +8,12 @@ export TERM="xterm-256color"
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 
-export PAGER="less"
-
 export HISTTIMEFORMAT="%F %T "
 export HISTCONTROL=ignoredups
 export HISTIGNORE="[bf]g:c:clear:e:exit:h:history:incognito:l:l[adfls]:pwd"
 export HISTSIZE=10000
 export HISTFILESIZE=20000
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-export X_NIMBLE_HOME="/home/ddnull/.nimble/bin"
-export X_NIMBLE_TOOLS="/home/ddnull/.nimble/tools"
-export PNPM_HOME="/home/ddnull/.local/share/pnpm"
-export DART_SASS_HOME="/home/ddnull/.local/share/sass"
-export GO_BIN="/usr/local/go/bin"
-export POETRY_HOME="$HOME/.poetry/bin"
-
-export PATH="$X_NIMBLE_HOME:$X_NIMBLE_TOOLS:$PNPM_HOME:$DART_SASS_HOME:$GO_BIN:$POETRY_HOME:$PATH"
-
-eval "$(pyenv init --path)"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -46,9 +30,7 @@ export FZF_DEFAULT_OPTS=" \
     --color=info:#f7c662,prompt:#6699cc,pointer:#a6bc69,marker:#a6bc69,spinner:#f7c662,header:#6699cc"
 
 # nnn.
-export NNN_BMS="d:~/Downloads;D:~/Documents;t:~/Temporary" # Bookmarks
 export NNN_FCOLORS="03040601000205f7d204d9f7" # File colors
-export NNN_PLUG="D:-!mediainfo \$nnn" # Plugins
 export NNN_TRASH=1 # Trash instead of delete the files
 
 # ripgrep.

@@ -75,3 +75,5 @@ syntax enable
 set t_Co=256
 set encoding=utf-8
 set guifont=Hack
+
+cmap w!! w !sudo tee > /dev/null %
