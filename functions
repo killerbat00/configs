@@ -28,7 +28,16 @@ incognito() {
 }
 
 httpserver() {
-    local ip=localhost
+    local ip="0.0.0.0"
     local port="${1:-1992}"
     python3 -m http.server --bind "${ip}" "${port}"
+}
+
+fix-commit-date() {
+    git filter-branch -f --env-filter \
+        'if [ $GIT_COMMIT = $1 ]
+         then
+            export GIT_AUTHOR_DATE="$2"
+            export GIT_COMMITTER_DATE="$2"
+        fi'
 }
