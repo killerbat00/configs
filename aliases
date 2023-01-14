@@ -19,6 +19,7 @@ alias preview='fzf --height=50% --layout=reverse --preview="bat --color=always {
 
 # Shortcuts
 alias e='exit'
+alias pd='popd > /dev/null 2>&1; exec -l $SHELL'
 alias cat='bat'
 alias mp3-dl='yt-dlp --ignore-config --extract-audio \
     --audio-format "mp3" --audio-quality 0 --embed-thumbnail --embed-metadata \
@@ -29,15 +30,19 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date "+%a, %d %b %H:%M:%
 alias upd='sudo apt -y update; sudo apt -y upgrade'
 alias nn='new-note'
 alias srv='httpserver'
-SRC_LOCATION=~/dev/web/bhm.sh
-alias bhmdev='pushd $SRC_LOCATION > /dev/null 2>&1; source .aliases; code .'
-alias bhmsrc='pushd $SRC_LOCATION > /dev/null 2>&1; source .aliases;'
-alias pd='popd > /dev/null 2>&1'
 
+# Development
 alias g='git'
 alias ga='git add -p'
 alias gs='git status'
 alias v='nvim'
+
+alias bhmdev='pushd . > /dev/null 2>&1; ~/dev/web/bhm.sh; source .aliases; code .'
+alias bhmsrc='pushd . > /dev/null 2>&1; ~/dev/web/bhm.sh; source .aliases;'
+
+alias aoc='pushd . > /dev/null 2>&1; cd ~/dev/adventofcode'
+
+alias nf='pushd . > /dev/null 2>&1; cd ~/dev/web/nimfairy; source .aliases;'
 
 # Typos
 alias :q='exit'
